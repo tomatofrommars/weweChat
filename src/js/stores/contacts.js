@@ -244,6 +244,7 @@ class Contacts {
                 Object.assign(chating, user);
             }
 
+            user.Toodc = list[index].Toodc;
             list[index] = user;
             self.memberList.replace(list);
         }

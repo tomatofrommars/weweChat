@@ -25,10 +25,12 @@ export default class Header extends Component {
     render() {
         return (
             <header className={classes.container}>
-                <div className={classes.titleWrapper}>
-                    <h1 className={classes.title}>{this.getTitle()}</h1>
-                    &nbsp;&nbsp;
-                    <input type="text" placeholder="请输入 PMS 账号" onBlur={e => this.account(e.target.value)} />
+                <div className={classes.drag}>
+                    <div className={classes.titleWrapper}>
+                        <h1 className={classes.title}>{this.getTitle()}</h1>
+                        &nbsp;&nbsp;
+                        <input type="text" placeholder="请输入 PMS 账号" onBlur={e => this.account(e.target.value)} />
+                    </div>
                 </div>
             </header>
         );
