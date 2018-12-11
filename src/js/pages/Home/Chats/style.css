@@ -76,6 +76,10 @@
     white-space: nowrap;
 }
 
+.toodc {
+    color: #1eb751;
+}
+
 .times {
     font-size: 12px;
     color: #979797;

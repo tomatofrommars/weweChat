@@ -83,7 +83,7 @@ export default class Settings extends Component {
                                     onChange={e => setDownloads(e.target.files[0])}
                                     ref="downloads"
                                     type="file" />
-                                <p>Downloads</p>
+                                <p>下载目录</p>
                                 <p onClick={e => this.choiceDownloadDir()}>{downloads}</p>
                             </div>
 
@@ -91,7 +91,7 @@ export default class Settings extends Component {
                         </li>
                         <li>
                             <label htmlFor="alwaysOnTop">
-                                <span>Always on Top</span>
+                                <span>保持在前</span>
                                 <Switch
                                     checked={alwaysOnTop}
                                     id="alwaysOnTop"
@@ -101,7 +101,7 @@ export default class Settings extends Component {
 
                         <li>
                             <label htmlFor="showOnTray">
-                                <span>Show on Tray</span>
+                                <span>显示到状态栏</span>
                                 <Switch
                                     checked={showOnTray}
                                     disabled={!helper.isOsx}
@@ -112,7 +112,7 @@ export default class Settings extends Component {
 
                         <li>
                             <label htmlFor="showNotification">
-                                <span>Send Desktop Notifications</span>
+                                <span>打开通知</span>
                                 <Switch
                                     checked={showNotification}
                                     id="showNotification"
@@ -122,7 +122,7 @@ export default class Settings extends Component {
 
                         <li>
                             <label htmlFor="blockRecall">
-                                <span>Block Message Recall</span>
+                                <span>拦截撤回消息</span>
                                 <Switch
                                     checked={blockRecall}
                                     id="blockRecall"
@@ -132,7 +132,7 @@ export default class Settings extends Component {
 
                         <li>
                             <label htmlFor="rememberConversation">
-                                <span>Remember the last Conversation</span>
+                                <span>记住上次通话</span>
                                 <Switch
                                     checked={rememberConversation}
                                     id="rememberConversation"
@@ -142,7 +142,7 @@ export default class Settings extends Component {
 
                         <li>
                             <label htmlFor="showRedIcon">
-                                <span>Show the red button</span>
+                                <span>显示红色按钮</span>
                                 <Switch
                                     checked={showRedIcon}
                                     id="showRedIcon"
@@ -152,7 +152,7 @@ export default class Settings extends Component {
 
                         <li>
                             <label htmlFor="confirmImagePaste">
-                                <span>Image paste Confirmation</span>
+                                <span>图片粘贴确认</span>
                                 <Switch
                                     checked={confirmImagePaste}
                                     id="confirmImagePaste"
@@ -162,7 +162,7 @@ export default class Settings extends Component {
 
                         <li>
                             <label htmlFor="startup">
-                                <span>Launch at startup</span>
+                                <span>开机启动</span>
                                 <Switch
                                     checked={startup}
                                     id="startup"

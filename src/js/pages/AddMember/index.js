@@ -113,7 +113,7 @@ export default class AddMember extends Component {
                             Add
                         </button>
 
-                        <button onClick={e => this.close()}>Cancel</button>
+                        <button onClick={e => this.close()}>取消</button>
                     </div>
                 </ModalBody>
             </Modal>

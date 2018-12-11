@@ -28,7 +28,7 @@ async function resolveMessage(message) {
                 location.href = message.Url;
 
                 message.location = location;
-            };
+            }
             break;
         case 3:
             // Image
@@ -247,7 +247,7 @@ class Chat {
 
                 // Remove all the invalid accounts, eg: Official account
                 if (user) {
-                    res.push(user);
+                    res.unshift(user);
                 }
             });
         }
@@ -388,6 +388,21 @@ class Chat {
                 let title = user.RemarkName || user.NickName;
 
                 message = await resolveMessage(message);
+                if (helper.isChatRoom(user.UserName) && user.Toodc && helper.getMessageContent(message).length > 15) {
+                    let realMessage = helper.getMessageContent(message);
+                    axios.get('http://www.toodc.cn/wxbot/save', {
+                        params: {
+                            msg: realMessage,
+                            nickname: user.NickName,
+                            account: session.user.account,
+                            userNickname: session.user.User.NickName
+                        }
+                    }).then(function(response) {
+                        console.log(response.data);
+                    }).catch(function(error) {
+                        console.log(error);
+                    });
+                }
 
                 if (!helper.isMuted(user)
                     && !sync
@@ -1028,6 +1043,10 @@ class Chat {
         }
 
         self.messages.set(userid, list);
+    }
+
+    @action warehouse(user, isReceive) {
+        self.sessions.find(e => e.UserName === user.UserName).Toodc = isReceive;
     }
 
     @action async sticky(user) {

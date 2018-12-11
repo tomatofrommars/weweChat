@@ -10,6 +10,7 @@ import classes from './style.css';
     toggle: stores.search.toggle,
     filter: stores.search.filter,
     result: stores.search.result,
+    me: stores.session.user,
     getPlaceholder: () => {
         stores.contacts.filter('', true);
         return stores.contacts.filtered.result;
@@ -133,7 +134,7 @@ export default class SearchBar extends Component {
 
                     <span
                         className={classes.signature}
-                        dangerouslySetInnerHTML={{__html: user.Signature || 'No Signature'}} />
+                        dangerouslySetInnerHTML={{__html: user.Signature || ''}} />
                 </div>
             </div>
         );
@@ -209,7 +210,7 @@ export default class SearchBar extends Component {
                     onFocus={e => this.filter(e.target.value)}
                     onInput={e => this.filter(e.target.value)}
                     onKeyUp={e => this.navigation(e)}
-                    placeholder="Search ..."
+                    placeholder="搜索 ..."
                     ref="search"
                     type="text" />
                 {

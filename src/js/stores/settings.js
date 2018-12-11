@@ -7,7 +7,7 @@ import helper from 'utils/helper';
 
 class Settings {
     @observable alwaysOnTop = false;
-    @observable showOnTray = false;
+    @observable showOnTray = true;
     @observable showNotification = true;
     @observable confirmImagePaste = true;
     @observable startup = false;

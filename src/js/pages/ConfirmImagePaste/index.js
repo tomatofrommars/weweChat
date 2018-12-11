@@ -32,14 +32,14 @@ export default class ConfirmImagePaste extends Component {
                 fullscreen={true}
                 show={show}>
                 <ModalBody className={classes.container}>
-                    Send image ?
+                    发送图片？
 
                     <img src={image} />
 
                     <div>
-                        <button onClick={e => ok()}>Send</button>
+                        <button onClick={e => ok()}>发送</button>
 
-                        <button onClick={e => cancel()}>Cancel</button>
+                        <button onClick={e => cancel()}>取消</button>
                     </div>
                 </ModalBody>
             </Modal>

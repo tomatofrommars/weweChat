@@ -78,7 +78,7 @@ export default class Forward extends Component {
                 onCancel={e => this.close()}
                 show={this.props.show}>
                 <ModalBody className={classes.container}>
-                    Forward Message
+                    转发消息
 
                     <div className={classes.avatars}>
                         {
@@ -100,10 +100,10 @@ export default class Forward extends Component {
                         <button
                             disabled={!this.state.selected.length}
                             onClick={e => this.send(this.state.selected)}>
-                            Send Message
+                            发送消息
                         </button>
 
-                        <button onClick={e => this.close()}>Cancel</button>
+                        <button onClick={e => this.close()}>取消</button>
                     </div>
                 </ModalBody>
             </Modal>

@@ -638,7 +638,7 @@ export default class ChatContent extends Component {
 
                                     <span
                                         className={classes.signature}
-                                        dangerouslySetInnerHTML={{__html: signature || 'No Signature'}}
+                                        dangerouslySetInnerHTML={{__html: signature || ''}}
                                         onClick={e => this.props.showMembers(user)}
                                         title={signature} />
                                 </div>

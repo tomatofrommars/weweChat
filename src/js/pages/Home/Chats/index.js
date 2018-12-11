@@ -27,6 +27,7 @@ moment.updateLocale('en', {
     messages: stores.chat.messages,
     markedRead: stores.chat.markedRead,
     sticky: stores.chat.sticky,
+    warehouse: stores.chat.warehouse,
     removeChat: stores.chat.removeChat,
     loading: stores.session.loading,
     searching: stores.search.searching,
@@ -54,36 +55,55 @@ export default class Chats extends Component {
     }
 
     showContextMenu(user) {
-        var menu = new remote.Menu.buildFromTemplate([
-            {
-                label: 'Send Message',
-                click: () => {
-                    this.props.chatTo(user);
-                }
-            },
-            {
+        const menus = [];
+        menus.push({
+            label: '发送消息',
+            click: () => {
+                this.props.chatTo(user);
+            }
+        });
+        if (helper.isChatRoom(user.UserName)) {
+            menus.push({
                 type: 'separator'
-            },
-            {
-                label: helper.isTop(user) ? 'Unsticky' : 'Sticky on Top',
-                click: () => {
-                    this.props.sticky(user);
-                }
-            },
-            {
-                label: 'Delete',
-                click: () => {
-                    this.props.removeChat(user);
-                }
-            },
-            {
-                label: 'Mark as Read',
-                click: () => {
-                    this.props.markedRead(user.UserName);
-                }
-            },
-        ]);
-
+            });
+            if (user.Toodc) {
+                menus.push({
+                    label: '取消收集',
+                    click: () => {
+                        this.props.warehouse(user, false);
+                    }
+                });
+            } else {
+                menus.push({
+                    label: '收集仓库信息',
+                    click: () => {
+                        this.props.warehouse(user, true);
+                    }
+                });
+            }
+        }
+        menus.push({
+            type: 'separator'
+        });
+        menus.push({
+            label: helper.isTop(user) ? '取消置顶' : '置顶',
+            click: () => {
+                this.props.sticky(user);
+            }
+        });
+        menus.push({
+            label: '删除',
+            click: () => {
+                this.props.removeChat(user);
+            }
+        });
+        menus.push({
+            label: '标记已读',
+            click: () => {
+                this.props.markedRead(user.UserName);
+            }
+        });
+        var menu = new remote.Menu.buildFromTemplate(menus);
         menu.popup(remote.getCurrentWindow());
     }
 
@@ -144,10 +164,14 @@ export default class Chats extends Component {
                                             <p
                                                 className={classes.username}
                                                 dangerouslySetInnerHTML={{__html: e.RemarkName || e.NickName}} />
-
-                                            <span
-                                                className={classes.message}
-                                                dangerouslySetInnerHTML={{__html: helper.getMessageContent(message) || 'No Message'}} />
+                                            <span className={classes.message}>
+                                                <span
+                                                    className={classes.toodc}
+                                                    dangerouslySetInnerHTML={{__html: e.Toodc ? '收集中... ' : ''}} />
+                                                {
+                                                    helper.getMessageContent(message) || ''
+                                                }
+                                            </span>
                                         </div>
                                     </div>
 

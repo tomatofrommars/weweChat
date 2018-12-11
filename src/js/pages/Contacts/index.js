@@ -58,7 +58,7 @@ export default class Contacts extends Component {
                                                 dangerouslySetInnerHTML={{__html: e.RemarkName || e.NickName}} />
                                             <p
                                                 className={classes.signature}
-                                                dangerouslySetInnerHTML={{__html: e.Signature || 'No Signature'}} />
+                                                dangerouslySetInnerHTML={{__html: e.Signature || ''}} />
                                         </div>
                                     </div>
                                 );

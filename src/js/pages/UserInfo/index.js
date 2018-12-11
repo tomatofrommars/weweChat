@@ -178,7 +178,7 @@ class UserInfo extends Component {
                         {
                             !this.props.remove ? (
                                 <div className={classes.wrap}>
-                                    <p dangerouslySetInnerHTML={{__html: Signature || 'No Signature'}} />
+                                    <p dangerouslySetInnerHTML={{__html: Signature || ''}} />
 
                                     <div className={classes.address}>
                                         <i
@@ -210,7 +210,7 @@ class UserInfo extends Component {
                                 color: buttonColor,
                                 opacity: .6,
                             }}>
-                            {helper.isChatRoom(UserName) || isFriend ? 'Send Message' : 'Add Friend'}
+                            {helper.isChatRoom(UserName) || isFriend ? '发送消息' : '添加好友'}
                         </div>
                     </div>
 
@@ -221,7 +221,7 @@ class UserInfo extends Component {
                                 autoFocus={true}
                                 defaultValue={RemarkName}
                                 onKeyPress={e => this.handleEnter(e)}
-                                placeholder="Type the remark name"
+                                placeholder="添加备注"
                                 ref="input"
                                 type="text" />
                         )
