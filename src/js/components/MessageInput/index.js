@@ -173,14 +173,14 @@ export default class MessageInput extends Component {
                 <div
                     className={classes.tips}
                 >
-                    请选择联系人。
+                    请选择联系人
                 </div>
 
                 <input
                     id="messageInput"
                     ref="input"
                     type="text"
-                    placeholder="输入消息..."
+                    placeholder="发送消息..."
                     readOnly={!canisend}
                     onPaste={e => this.handlePaste(e)}
                     onKeyPress={e => this.handleEnter(e)}

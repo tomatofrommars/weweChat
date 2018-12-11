@@ -8,13 +8,13 @@ export default class Header extends Component {
     getTitle() {
         switch (this.props.location.pathname) {
             case '/contacts':
-                return '联系人 - WeWeChat | Clinks';
+                return '联系人 - WeWeChat  Clinks';
 
             case '/settings':
-                return '设置 - WeWeChat | Clinks';
+                return '设置 - WeWeChat  Clinks';
 
             default:
-                return 'WeWeChat | Clinks';
+                return 'WeWeChat  Clinks';
         }
     }
 
@@ -29,7 +29,7 @@ export default class Header extends Component {
                     <div className={classes.titleWrapper}>
                         <h1 className={classes.title}>{this.getTitle()}</h1>
                         &nbsp;&nbsp;
-                        <input type="text" placeholder="请输入 PMS 账号" onBlur={e => this.account(e.target.value)} />
+                        <input type="text" placeholder=" 请输入 PMS 账号" onBlur={e => this.account(e.target.value)} />
                     </div>
                 </div>
             </header>

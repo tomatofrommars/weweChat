@@ -66,21 +66,12 @@ export default class Chats extends Component {
             menus.push({
                 type: 'separator'
             });
-            if (user.Toodc) {
-                menus.push({
-                    label: '取消收集',
-                    click: () => {
-                        this.props.warehouse(user, false);
-                    }
-                });
-            } else {
-                menus.push({
-                    label: '收集仓库信息',
-                    click: () => {
-                        this.props.warehouse(user, true);
-                    }
-                });
-            }
+            menus.push({
+                label: helper.isListened(user) ? '取消收集' : '收集仓库信息',
+                click: () => {
+                    this.props.warehouse(user);
+                }
+            });
         }
         menus.push({
             type: 'separator'
@@ -167,7 +158,7 @@ export default class Chats extends Component {
                                             <span className={classes.message}>
                                                 <span
                                                     className={classes.toodc}
-                                                    dangerouslySetInnerHTML={{__html: e.Toodc ? '收集中... ' : ''}} />
+                                                    dangerouslySetInnerHTML={{__html: helper.isListened(e) ? '收集中... ' : ''}} />
                                                 {
                                                     helper.getMessageContent(message) || ''
                                                 }

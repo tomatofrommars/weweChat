@@ -210,7 +210,7 @@ export default class SearchBar extends Component {
                     onFocus={e => this.filter(e.target.value)}
                     onInput={e => this.filter(e.target.value)}
                     onKeyUp={e => this.navigation(e)}
-                    placeholder="搜索 ..."
+                    placeholder="搜索联系人 ..."
                     ref="search"
                     type="text" />
                 {

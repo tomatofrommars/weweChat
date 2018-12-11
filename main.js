@@ -313,7 +313,7 @@ let trayMenu = [
         label: 'Check for updates',
         accelerator: 'Cmd+U',
         click() {
-            checkForUpdates();
+            // checkForUpdates();
         }
     },
     {

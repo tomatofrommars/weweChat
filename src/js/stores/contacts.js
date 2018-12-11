@@ -122,7 +122,6 @@ class Contacts {
             }
         }
 
-        user.Toodc = false;
         user.NickName = normalize(user.NickName);
         user.RemarkName = normalize(user.RemarkName);
         user.Signature = normalize(user.Signature);
@@ -244,7 +243,6 @@ class Contacts {
                 Object.assign(chating, user);
             }
 
-            user.Toodc = list[index].Toodc;
             list[index] = user;
             self.memberList.replace(list);
         }

@@ -442,17 +442,20 @@ export default class ChatContent extends Component {
         var caniforward = [1, 3, 47, 43, 49 + 6].includes(message.MsgType);
         var templates = [
             {
-                label: 'Delete',
+                label: '复制',
+                role: 'copy',
+            }, {
+                label: '删除',
                 click: () => {
                     this.props.deleteMessage(message.MsgId);
                 }
-            },
+            }
         ];
         var menu;
 
         if (caniforward) {
             templates.unshift({
-                label: 'Forward',
+                label: '转发',
                 click: () => {
                     this.props.showForward(message);
                 }
@@ -488,7 +491,7 @@ export default class ChatContent extends Component {
                 type: 'separator',
             },
             {
-                label: 'Empty Content',
+                label: '清空',
                 click: () => {
                     this.props.empty(user);
                 }
@@ -497,13 +500,13 @@ export default class ChatContent extends Component {
                 type: 'separator'
             },
             {
-                label: helper.isTop(user) ? 'Unsticky' : 'Sticky on Top',
+                label: helper.isTop(user) ? '取消置顶' : '置顶',
                 click: () => {
                     this.props.sticky(user);
                 }
             },
             {
-                label: 'Delete',
+                label: '删除',
                 click: () => {
                     this.props.removeChat(user);
                 }
@@ -529,7 +532,7 @@ export default class ChatContent extends Component {
         });
 
         if (counter) {
-            tips.innerHTML = `You has ${counter} unread messages.`;
+            tips.innerHTML = `你有 ${counter} 未读消息。`;
             tips.classList.add(classes.show);
         } else {
             tips.classList.remove(classes.show);

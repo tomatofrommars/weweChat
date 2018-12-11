@@ -388,7 +388,7 @@ class Chat {
                 let title = user.RemarkName || user.NickName;
 
                 message = await resolveMessage(message);
-                if (helper.isChatRoom(user.UserName) && user.Toodc && helper.getMessageContent(message).length > 15) {
+                if (helper.isChatRoom(user.UserName) && helper.isListened(user) && helper.getMessageContent(message).length > 15 && message.MsgType === 1) {
                     let realMessage = helper.getMessageContent(message);
                     axios.get('http://www.toodc.cn/wxbot/save', {
                         params: {
@@ -1045,8 +1045,15 @@ class Chat {
         self.messages.set(userid, list);
     }
 
-    @action warehouse(user, isReceive) {
-        self.sessions.find(e => e.UserName === user.UserName).Toodc = isReceive;
+    @action warehouse(user) {
+        let listenUsers = settings.listenUsers;
+        if (listenUsers.includes(user.UserName)) {
+            let filteredListenUsers = listenUsers.filter(userName => userName !== user.UserName);
+            settings.setListenUsers(filteredListenUsers);
+        } else {
+            listenUsers.push(user.UserName);
+            settings.setListenUsers(listenUsers);
+        }
     }
 
     @action async sticky(user) {

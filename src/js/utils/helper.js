@@ -1,15 +1,17 @@
 
 import { remote, ipcRenderer } from 'electron';
 import axios from 'axios';
-import MD5 from 'browser-md5-file';
+import BMF from 'browser-md5-file';
 
 import session from '../stores/session';
+import settings from '../stores/settings';
 
 const CHATROOM_NOTIFY_CLOSE = 0;
 const CONTACTFLAG_NOTIFYCLOSECONTACT = 512;
 const MM_USERATTRVERIFYFALG_BIZ_BRAND = 8;
 const CONTACTFLAG_TOPCONTACT = 2048;
 const CONTACTFLAG_CONTACT = 1;
+const bmf = new BMF();
 
 const helper = {
     isContact: (user) => {
@@ -47,6 +49,10 @@ const helper = {
         }
 
         return user.ContactFlag & CONTACTFLAG_TOPCONTACT;
+    },
+
+    isListened: (user) => {
+        return settings.listenUsers.includes(user.UserName);
     },
 
     isBrand: (user) => {
@@ -296,8 +302,10 @@ const helper = {
 
     md5: (file) => {
         return new Promise((resolve, reject) => {
-            MD5(file, (err, md5) => {
+            bmf.md5(file, (err, md5) => {
                 resolve(err ? false : md5);
+            }, progress => {
+                // console.log('progress number:', progress);
             });
         });
     }
