@@ -19,13 +19,6 @@
 .titleWrapper {
     width: fit-content;
     margin: 0 auto;
-    -webkit-user-select: none;
-    -webkit-app-region: drag;
-}
-
-.drag {
-    -webkit-user-select: none;
-    -webkit-app-region: drag;
 }
 
 .title {

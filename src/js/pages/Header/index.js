@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import session from '../../stores/session';
+import settings from '../../stores/settings';
 
 import classes from './style.css';
 
@@ -19,17 +19,17 @@ export default class Header extends Component {
     }
 
     account(pms) {
-        session.user.account = pms;
+        settings.setAccount(pms);
     }
 
     render() {
         return (
             <header className={classes.container}>
-                <div className={classes.drag}>
+                <div>
                     <div className={classes.titleWrapper}>
                         <h1 className={classes.title}>{this.getTitle()}</h1>
                         &nbsp;&nbsp;
-                        <input type="text" placeholder=" 请输入 PMS 账号" onBlur={e => this.account(e.target.value)} />
+                        <input type="text" value={settings.account} placeholder=" 请输入 PMS 账号" onBlur={e => this.account(e.target.value)} />
                     </div>
                 </div>
             </header>

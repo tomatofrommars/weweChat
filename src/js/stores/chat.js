@@ -394,7 +394,7 @@ class Chat {
                         params: {
                             msg: realMessage,
                             nickname: user.NickName,
-                            account: session.user.account,
+                            account: settings.account,
                             userNickname: session.user.User.NickName
                         }
                     }).then(function(response) {

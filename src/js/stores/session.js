@@ -127,7 +127,6 @@ class Session {
         });
 
         self.user = response.data;
-        self.user.account = '';
         self.user.ContactList.map(e => {
             e.HeadImgUrl = `${axios.defaults.baseURL}${e.HeadImgUrl.substr(1)}`;
         });
