@@ -29,7 +29,8 @@ export default class Header extends Component {
                     <div className={classes.titleWrapper}>
                         <h1 className={classes.title}>{this.getTitle()}</h1>
                         &nbsp;&nbsp;
-                        <input type="text" value={settings.account} placeholder=" 请输入 PMS 账号" onBlur={e => this.account(e.target.value)} />
+                        <input type="text" placeholder={(settings.account === '' || settings.account === '0') ? ' 请输入 PMS 账号' : settings.account}
+                            onBlur={e => this.account(e.target.value)} />
                     </div>
                 </div>
             </header>

@@ -16,7 +16,7 @@ class Settings {
     @observable showRedIcon = true;
     @observable downloads = '';
     @observable listenUsers = [];
-    @observable account = '';
+    @observable account = '0';
 
     @action setAlwaysOnTop(alwaysOnTop) {
         self.alwaysOnTop = alwaysOnTop;
@@ -82,7 +82,7 @@ class Settings {
             self.alwaysOnTop = !!settings.alwaysOnTop;
             self.showOnTray = !!settings.showOnTray;
             self.listenUsers = settings.listenUsers || [];
-            self.account = settings.account;
+            self.account = settings.account || '0';
             self.showNotification = !!settings.showNotification;
             self.confirmImagePaste = !!settings.confirmImagePaste;
             self.startup = !!settings.startup;
